@@ -406,13 +406,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
 	switch(size) {
 	  case "1":
-		document.getElementById("#pizzaSize").innerHTML = "Small";
+		document.querySelector("#pizzaSize").innerHTML = "Small";
 		return;
 	  case "2":
-		document.getElementById("#pizzaSize").innerHTML = "Medium";
+		document.querySelector("#pizzaSize").innerHTML = "Medium";
 		return;
 	  case "3":
-		document.getElementById("#pizzaSize").innerHTML = "Large";
+		document.querySelector("#pizzaSize").innerHTML = "Large";
 		return;
 	  default:
 		console.log("bug in changeSliderLabel");
@@ -438,7 +438,7 @@ var resizePizzas = function(size) {
 	  default: console.log("bug here in slider");
 	}
       //query selector was changed to get element by id and all unnecessary calculations were eliminated to onlu include percentage calculations
-	var randomPizzas = document.getElementsByClassName(".randomPizzaContainer");
+	var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
 	for (var i = 0; i < randomPizzas.length; i++) {
 	  randomPizzas[i].style.width = newwidth + "%";
 	}
