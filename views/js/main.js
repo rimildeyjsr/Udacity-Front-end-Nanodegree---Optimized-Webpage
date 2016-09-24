@@ -423,6 +423,7 @@ var resizePizzas = function(size) {
 
 
   // Iterates through pizza elements on the page and changes their widths
+    //was changed to only accomodate percentage unit, and eliminate the px to percentage conversions
   function changePizzaSizes(size) {
 	switch(size) {
 	  case "1":
@@ -436,6 +437,7 @@ var resizePizzas = function(size) {
 		break;
 	  default: console.log("bug here in slider");
 	}
+      //query selector was changed to get element by id and all unnecessary calculations were eliminated to onlu include percentage calculations
 	var randomPizzas = document.getElementsByClassName(".randomPizzaContainer");
 	for (var i = 0; i < randomPizzas.length; i++) {
 	  randomPizzas[i].style.width = newwidth + "%";
@@ -487,8 +489,11 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+    //phase will be moved to a new array to avoid repeated and expensive calculations
 	var phaseArray = new Array ();
+    //scroll calculation moved out of the array
 	var scroll_calc  = document.body.scrollTop/1250;
+    //length stored in variable to avoid repeated calculations
 	var length_for_loop = items.length;
   for (var i = 0; i < length_for_loop ; i++) {
 		var phase = Math.sin(scroll_calc + (i % 5));
@@ -507,6 +512,7 @@ function updatePositions() {
 	logAverageFrame(timesToUpdatePosition);
   }
 }
+//made a global variable to provide access to the event listener
 var items;
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
@@ -525,6 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	elem.style.top = (Math.floor(i / cols) * s) + 'px';
 	document.querySelector("#movingPizzas1").appendChild(elem);
   }
+    //moved out of the updatePosition function.
 	items = document.getElementsByClassName('mover');
   updatePositions();
 });
